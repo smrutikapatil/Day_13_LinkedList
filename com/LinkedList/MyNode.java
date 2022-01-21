@@ -30,7 +30,7 @@ public class MyNode<K> implements INode<K> {
 
 	@Override
 	public String toString() {
-		StringBuilder myString = new StringBuilder();
+		StringBuffer myString = new StringBuffer();
 		myString.append("{MyNode:" + "key=").append(Key).append("}");
 		if (next != null) {
 			myString.append("-->").append(next);
