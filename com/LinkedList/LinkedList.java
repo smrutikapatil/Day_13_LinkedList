@@ -21,17 +21,19 @@ public class LinkedList<K> {
 			this.head.setNext(tempNode);
 		}
 	}
+
 	public void append(INode<K> newNode) {
-        if (this.head == null) {
-            this.head = newNode;
-        }
-        if (this.tail == null) {
-            this.tail = newNode;
-        } else {
-            this.tail.setNext(newNode);
-            this.tail = newNode;
-        }
+		if (this.head == null) {
+			this.head = newNode;
+		}
+		if (this.tail == null) {
+			this.tail = newNode;
+		} else {
+			this.tail.setNext(newNode);
+			this.tail = newNode;
+		}
 	}
+
 	public void printMyNode() {
 		System.out.println(head);
 	}
