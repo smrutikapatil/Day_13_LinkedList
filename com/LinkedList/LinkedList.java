@@ -9,29 +9,35 @@ public class LinkedList<K> {
 		this.tail = null;
 	}
 
-	public void add(INode newNode) {
+	public void add(INode myNode) {
 		if (this.tail == null) {
-			this.tail = newNode;
+			this.tail = myNode;
 		}
 		if (this.head == null) {
-			this.head = newNode;
+			this.head = myNode;
 		} else {
 			INode tempNode = this.head;
-			this.head = newNode;
+			this.head = myNode;
 			this.head.setNext(tempNode);
 		}
 	}
 
-	public void append(INode<K> newNode) {
+	public void append(INode<K> myNode) {
 		if (this.head == null) {
-			this.head = newNode;
+			this.head = myNode;
 		}
 		if (this.tail == null) {
-			this.tail = newNode;
+			this.tail = myNode;
 		} else {
-			this.tail.setNext(newNode);
-			this.tail = newNode;
+			this.tail.setNext(myNode);
+			this.tail = myNode;
 		}
+	}
+
+	public void insert(INode myNode, INode newNode) {
+		INode tempNode = myNode.getNext();
+		myNode.setNext(newNode);
+		newNode.setNext(tempNode);
 	}
 
 	public void printMyNode() {
