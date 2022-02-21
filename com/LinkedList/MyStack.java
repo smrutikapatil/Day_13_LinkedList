@@ -5,19 +5,18 @@ import org.junit.Test;
 
 public class MyStack {
 	@Test
-	public void givenSearchElementWhenLinkedListResult() {
+	public void givenDeleteElementWhenLinkedListResult() {
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
 		MyNode<Integer> mySecondNode = new MyNode<>(30);
 		MyNode<Integer> newNode = new MyNode<>(40);
 		MyNode<Integer> myThirdNode = new MyNode<>(70);
 		
 		LinkedList linkedlist = new LinkedList();
-		linkedlist.append(myFirstNode);
-		//linkedlist.add(newNode);
+		linkedlist.add(myFirstNode);
+		linkedlist.append(mySecondNode);
 		linkedlist.append(myThirdNode);
 		
-		linkedlist.InsertNewNode(newNode);
-		linkedlist.InsertNewNode(mySecondNode);
+		linkedlist.DeleteNode(40);
 		linkedlist.printMyNode();
 		
 	}

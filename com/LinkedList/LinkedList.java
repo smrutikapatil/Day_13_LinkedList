@@ -92,6 +92,20 @@ public class LinkedList<K> {
 		}	
 	}
 	
+	public INode DeleteNode(int value) {
+	        if (this.head == null) {
+	            System.out.println("List is Empty");
+	        }
+	        INode tempNode = head;
+			while (tempNode.getNext() != null) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(null);
+			
+			return tempNode;
+		}
+	    
 	public void printMyNode() {
 		System.out.println(head);
-	}}
+	}
+}
