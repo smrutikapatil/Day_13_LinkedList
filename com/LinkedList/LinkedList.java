@@ -80,8 +80,18 @@ public class LinkedList<K> {
 			System.out.println("Node is not present in the list");
 		}
 	}
-
+	
+	public void InsertNewNode(INode newNode) {
+		INode tempNode = head.getNext();
+		if (head == null) {
+			System.out.println("List is empty");
+		} else 
+		{
+			head.setNext(newNode);
+			newNode.setNext(tempNode);
+		}	
+	}
+	
 	public void printMyNode() {
 		System.out.println(head);
-	}
-}
+	}}
