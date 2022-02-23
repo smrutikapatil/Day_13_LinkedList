@@ -1,40 +1,17 @@
 package com.LinkedList;
 
-public class MyNode<K> implements INode<K> {
-	private K Key;
-	private INode<K> next;
+public class MyNode {
 
-	public MyNode(K Key) {
-		this.Key = Key;
-	}
+public int key;
+MyNode next;
+public MyNode(int key){
+    this.key = key;
+    this.next = null;
+}
 
-	@Override
-	public K getKey() {
-		return Key;
-	}
-
-	@Override
-	public void setKey(K Key) {
-		this.Key = Key;
-	}
-
-	@Override
-	public INode<K> getNext() {
-		return next;
-	}
-
-	@Override
-	public void setNext(INode<K> next) {
-		this.next = next;
-	}
-
-	@Override
-	public String toString() {
-		StringBuffer myString = new StringBuffer();
-		myString.append("{MyNode:" + "key=").append(Key).append("}");
-		if (next != null) {
-			myString.append("-->").append(next);
-		}
-		return myString.toString();
-	}
+@Override
+public String toString() {
+    return "Node{" +
+            "key =" + key +
+            ", next=" + next;};
 }

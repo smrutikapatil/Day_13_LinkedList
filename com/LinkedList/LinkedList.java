@@ -1,111 +1,140 @@
 package com.LinkedList;
 
-public class LinkedList<K> {
-	public INode head;
-	public INode tail;
+public class LinkedList {
+    MyNode head;
+    MyNode tail;
 
-	public LinkedList() {
-		this.head = null;
-		this.tail = null;
-	}
+    public MyNode push(int key) {
+        MyNode newNode = new MyNode(key);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            MyNode temp = head;
+            this.head = newNode;
+            newNode.next = temp;
+        }
+        return newNode;
+    }
 
-	public void add(INode myNode) {
-		if (this.tail == null) {
-			this.tail = myNode;
-		}
-		if (this.head == null) {
-			this.head = myNode;
-		} else {
-			INode tempNode = this.head;
-			this.head = myNode;
-			this.head.setNext(tempNode);
-		}
-	}
+    public void print() {
+        if (head == null) {
+            System.out.println("Linked List is Empty");
+        } else {
+            MyNode temp = head;
+            while (temp != null) {
+                System.out.print(temp.key + " ");
+                temp = temp.next;
+            }
+        }
+    }
 
-	public void append(INode<K> myNode) {
-		if (this.head == null) {
-			this.head = myNode;
-		}
-		if (this.tail == null) {
-			this.tail = myNode;
-		} else {
-			this.tail.setNext(myNode);
-			this.tail = myNode;
-		}
-	}
+    public void append(int key) {
+        MyNode newNode = new MyNode(key);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            this.tail.next = newNode;
+            tail = newNode;
+        }
+    }
 
-	public void insert(INode myNode, INode newNode) {
-		INode tempNode = myNode.getNext();
-		myNode.setNext(newNode);
-		newNode.setNext(tempNode);
-	}
+    public void insertInBetween(MyNode previousNode, MyNode newNode) {
+        MyNode tempNode = previousNode.next;
+        previousNode.next = newNode;
+        newNode.next = tempNode;
+    }
 
-	public INode pop() {
-		INode tempNode = this.head;
-		this.head = head.getNext();
-		return tempNode;
-	}
+    public void pop() {
+        this.head = this.head.next;
+    }
 
-	public INode popLast() {
-		INode tempNode = head;
-		while (tempNode.getNext().getNext() != null) {
-			tempNode = tempNode.getNext();
-		}
-		tempNode.setNext(null);
-		return tempNode;
-	}
+    public void popLast() {
+        MyNode tempNode = head;
+        while (!tempNode.next.equals(tail)) {
+            tempNode = tempNode.next;
+        }
+        this.tail = tempNode;
+        tempNode.next = null;
+    }
 
-	public void search(K key) {
-		INode<K> tempNode = this.head;
-		int count = 0;
-		while (tempNode != null) {
-			count++;
-			tempNode = tempNode.getNext();
-			if (tempNode.getKey().equals(key)) {
-				break;
-			}
-		}
-		int option = Integer.parseInt(String.valueOf(count));
-		switch (option) {
-		case 0:
-			System.out.println("Node is present at first node");
-			break;
-		case 1:
-			System.out.println("Node is present at second node");
-			break;
-		case 2:
-			System.out.println("Node is present at third node");
-			break;
-		default:
-			System.out.println("Node is not present in the list");
-		}
-	}
-	
-	public void InsertNewNode(INode newNode) {
-		INode tempNode = head.getNext();
-		if (head == null) {
-			System.out.println("List is empty");
-		} else 
-		{
-			head.setNext(newNode);
-			newNode.setNext(tempNode);
-		}	
-	}
-	
-	public INode DeleteNode(int value) {
-	        if (this.head == null) {
-	            System.out.println("List is Empty");
-	        }
-	        INode tempNode = head;
-			while (tempNode.getNext() != null) {
-				tempNode = tempNode.getNext();
-			}
-			tempNode.setNext(null);
-			
-			return tempNode;
-		}
-	    
-	public void printMyNode() {
+    public void searchNode(int value) {
+        MyNode tempNode = head;
+        int index = 1;
+        boolean flag = false;
+        if (head == null) {
+            System.out.println("List is empty");
+        } else {
+            while (tempNode != null) {
+                if (tempNode.key == value) {
+                    flag = true;
+                    break;
+                }
+                index++;
+                tempNode = tempNode.next;
+            }
+        }
+        if (flag == true) {
+            System.out.println("Value:" + value + " is present at Index:" + index);
+        } else {
+            System.out.println("Element no present");
+        }
+    }
+
+    public MyNode searchNodeAt(int value, MyNode newNode) {
+        MyNode tempNode = head;
+        if (head == null) {
+            System.out.println("List is empty");
+        } else {
+            while (tempNode != null) {
+                if (tempNode.key == value) {
+                    break;
+                }
+                tempNode = tempNode.next;
+
+            }
+            MyNode tempNodeNext = tempNode.next;
+            tempNode.next = newNode;
+            newNode.next = tempNodeNext;
+        }
+        return tempNode;
+    }
+
+    public void deleteANode(int value) {
+        if (this.head == null) {
+            System.out.println("List is Empty");
+            return;
+        }
+        MyNode tempNode = head;
+        while (tempNode.next.key != value) {
+            tempNode = tempNode.next;
+        }
+        MyNode previousNode = tempNode;
+        MyNode nextNode = tempNode.next.next;
+        previousNode.next = nextNode;
+    }
+
+    public void sort() {
+        MyNode initialStart = head, index = null;
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        while (initialStart != null) {
+            index = initialStart.next;
+            while (index != null) {
+                if (initialStart.key > index.key) {
+                    int temp = initialStart.key;
+                    initialStart.key = index.key;
+                    index.key = temp;
+                }
+                index = index.next;
+            }
+            initialStart = initialStart.next;
+        }
+    }
+public void printMyNode() {
 		System.out.println(head);
 	}
 }

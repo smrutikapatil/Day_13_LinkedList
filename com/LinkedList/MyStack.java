@@ -5,19 +5,16 @@ import org.junit.Test;
 
 public class MyStack {
 	@Test
-	public void givenDeleteElementWhenLinkedListResult() {
-		MyNode<Integer> myFirstNode = new MyNode<>(56);
-		MyNode<Integer> mySecondNode = new MyNode<>(30);
-		MyNode<Integer> newNode = new MyNode<>(40);
-		MyNode<Integer> myThirdNode = new MyNode<>(70);
-		
-		LinkedList linkedlist = new LinkedList();
-		linkedlist.add(myFirstNode);
-		linkedlist.append(mySecondNode);
-		linkedlist.append(myThirdNode);
-		
-		linkedlist.DeleteNode(40);
-		linkedlist.printMyNode();
-		
+	public void sortList() {
+		LinkedList linkedList = new LinkedList();
+		linkedList.push(70);
+		linkedList.push(40);
+		linkedList.push(30);
+		linkedList.push(56);
+		System.out.println("before sorting the list");
+		linkedList.printMyNode();
+		linkedList.sort();
+		System.out.println("after sorting the list");
+		linkedList.printMyNode();
 	}
 }
